@@ -103,6 +103,7 @@ const MIND = [
 function go(sec, tab) {
   $$('.sec').forEach(s => s.classList.toggle('show', s.id === sec));
   $$('#menu .nav-btn').forEach(b => b.classList.toggle('on', b.dataset.sec === sec));
+  $('#menu')?.classList.remove('mobile-open');
   if (tab) setTab(tab);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -111,6 +112,18 @@ function setTab(t) {
   $$('.tab').forEach(x => x.classList.toggle('show', x.id === 'tab-' + t));
   $$('.tab-btn').forEach(b => b.classList.toggle('on', b.dataset.tab === t));
 }
+
+// Menú móvil toggle
+$('#menu-toggle')?.addEventListener('click', e => {
+  e.stopPropagation();
+  $('#menu')?.classList.toggle('mobile-open');
+});
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('#menu') && !e.target.closest('#menu-toggle')) {
+    $('#menu')?.classList.remove('mobile-open');
+  }
+});
 
 $$('[data-sec]').forEach(b => {
   b.onclick = e => {
