@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVS Lab · Sistema de Valor del Servicio ITIL 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="web-bg"></div>
+<div class="mesh-glow"></div>
+
+<!-- Barra Superior de Navegación -->
+<header class="top">
+  <div class="brand">
+    <div class="brand-icon">🕸️</div>
+    <div class="brand-text">
+      <b>SVS LAB</b>
+      <small>ITIL 4 · Command Center</small>
+    </div>
+  </div>
+
+  <div class="top-status" id="global-db-pill">
+    <span class="live-indicator"></span>
+    <span id="global-db-text">PostgreSQL: Conectando...</span>
+  </div>
+
+  <nav id="menu">
+    <button data-sec="inicio" class="nav-btn on"><span class="nav-icon">⚡</span> Inicio</button>
+    <div class="dd">
+      <button data-sec="caso1" class="nav-btn"><span class="nav-icon">🎫</span> Caso 1 ▾</button>
+      <div class="sub">
+        <button data-sec="caso1" data-tab="panel">📊 Panel de Tickets</button>
+        <button data-sec="caso1" data-tab="usuarios">👥 Gestión Usuarios (PG)</button>
+        <button data-sec="caso1" data-tab="nuevo">➕ Nuevo Ticket</button>
+        <button data-sec="caso1" data-tab="metricas">📈 Métricas de Valor ITIL</button>
+      </div>
+    </div>
+    <button data-sec="caso2" class="nav-btn"><span class="nav-icon">📑</span> Caso 2: SVS</button>
+    <button data-sec="caso3" class="nav-btn"><span class="nav-icon">🧠</span> Caso 3: Mapa Mental</button>
+    <button data-sec="juegos" class="nav-btn"><span class="nav-icon">🎮</span> Juegos</button>
+    <button data-sec="vista3d" class="nav-btn"><span class="nav-icon">🪐</span> Vista 3D</button>
+  </nav>
+
+  <div class="user-chip" id="user-chip-btn" title="Cambiar usuario">
+    <div class="avatar-mini">🕷️</div>
+    <span id="user-chip-name">Usuario</span>
+  </div>
+</header>
+
+<main>
+<!-- ==================== SECCIÓN: INICIO ==================== -->
+<section id="inicio" class="sec show">
+  <div class="hero-banner">
+    <div class="hero-badge">SISTEMA DE GESTIÓN Y VALOR TI · ITIL 4</div>
+    <h1>Transformando la Demanda en <span class="text-glow">Valor Real</span></h1>
+    <p class="lead">Plataforma interactiva con PostgreSQL en tiempo real, análisis comparativo del Sistema de Valor del Servicio (SVS) y mapas conceptuales dinámicos. Guiado por el asistente inteligente Spidey-IA.</p>
+    
+    <div class="hero-actions">
+      <button class="cta cta-primary" onclick="go('caso1', 'panel')">🚀 Abrir Mesa de Tickets</button>
+      <button class="cta cta-ghost" onclick="go('caso2')">📖 Explorar el SVS</button>
+      <button class="cta cta-outline" onclick="toggleBot(true)">🕷️ Hablar con Spidey-IA</button>
+    </div>
+
+    <!-- Mini Resumen Rápido -->
+    <div class="quick-stats-bar" id="quick-stats-bar">
+      <div class="qstat"><span class="qval" id="qs-total">--</span><span class="qlbl">Tickets en BD</span></div>
+      <div class="qstat"><span class="qval" id="qs-open">--</span><span class="qlbl">Activos</span></div>
+      <div class="qstat"><span class="qval" id="qs-rate">100%</span><span class="qlbl">Tasa Resolución</span></div>
+      <div class="qstat"><span class="qval" id="qs-time">~1.2h</span><span class="qlbl">SLA Promedio</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h3>Módulos del Sistema de Aprendizaje y Gestión</h3>
+    <p class="mut">Selecciona un caso de estudio para interactuar con la información</p>
+  </div>
+
+  <div class="cards-grid">
+    <article class="feature-card" data-go="caso1">
+      <div class="card-glow"></div>
+      <div class="card-icon-box">🎫</div>
+      <span class="card-tag tag-primary">Caso 1</span>
+      <h3>TicketVerse & PostgreSQL</h3>
+      <p>Mesa de ayuda real con base de datos relacional para capturar incidentes de TI, gestionar estados (Abierto, En Proceso, Resuelto) y medir el SLA.</p>
+      <div class="card-footer">
+        <span>CRUD completo y métricas</span>
+        <span class="arrow">→</span>
+      </div>
+    </article>
+
+    <article class="feature-card" data-go="caso2">
+      <div class="card-glow"></div>
+      <div class="card-icon-box">📊</div>
+      <span class="card-tag tag-blue">Caso 2</span>
+      <h3>Los 5 Componentes del SVS</h3>
+      <p>Cuadro comparativo analítico interactivo con buscador: Principios Rectores, Gobernanza, Cadena de Valor, Prácticas y Mejora Continua.</p>
+      <div class="card-footer">
+        <span>Buscador y ejemplos reales</span>
+        <span class="arrow">→</span>
+      </div>
+    </article>
+
+    <article class="feature-card" data-go="caso3">
+      <div class="card-glow"></div>
+      <div class="card-icon-box">🧠</div>
+      <span class="card-tag tag-purple">Caso 3</span>
+      <h3>Mapa Mental Interactivo</h3>
+      <p>Visualización estructurada de los conceptos del SVS. Explora cada rama, principios rectores y actividades clave con un solo clic.</p>
+      <div class="card-footer">
+        <span>Navegación visual por nodos</span>
+        <span class="arrow">→</span>
+      </div>
+    </article>
+
+    <article class="feature-card" data-go="juegos">
+      <div class="card-glow"></div>
+      <div class="card-icon-box">🎮</div>
+      <span class="card-tag tag-success">Gamificación</span>
+      <h3>Quiz ITIL 4 & Simulador SLA</h3>
+      <p>Pon a prueba tus conocimientos sobre gestión de servicios y practica la resolución rápida de incidentes contra reloj.</p>
+      <div class="card-footer">
+        <span>Pruebas y simulador de bugs</span>
+        <span class="arrow">→</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ==================== SECCIÓN: CASO 1 (TICKETVERSE) ==================== -->
+<section id="caso1" class="sec">
+  <div class="sec-header">
+    <div>
+      <span class="badge-mini">CASO 1 · MESA DE SERVICIO</span>
+      <h2>TicketVerse: Gestión de Incidentes con PostgreSQL</h2>
+      <p class="lead">Solución a la problemática de solicitudes dispersas por WhatsApp: registro centralizado, medición de SLA y generación de valor continuo.</p>
+    </div>
+    <div class="db-badge" id="db-status-badge">
+      <span class="db-dot"></span>
+      <span id="db-status-text">Conectando a base de datos...</span>
+    </div>
+  </div>
+
+  <!-- Pestañas internas del Caso 1 -->
+  <div class="tabs-container">
+    <div class="tabs">
+      <button data-tab="panel" class="tab-btn on">📊 Panel de Control</button>
+      <button data-tab="usuarios" class="tab-btn">👥 Usuarios (PostgreSQL)</button>
+      <button data-tab="nuevo" class="tab-btn">➕ Nuevo Ticket</button>
+      <button data-tab="metricas" class="tab-btn">📈 Métricas ITIL 4</button>
+    </div>
+  </div>
+
+  <!-- Pestaña 1: Panel de Control -->
+  <div id="tab-panel" class="tab show">
+    <div class="kpis-grid" id="kpis">
+      <!-- Inyectado dinámicamente -->
+    </div>
+
+    <!-- Barra de Herramientas y Filtros -->
+    <div class="filter-bar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="ticket-search" placeholder="Buscar por usuario, ID o problema...">
+      </div>
+      <div class="filters-group">
+        <select id="filter-state" title="Filtrar por Estado">
+          <option value="todos">Estado: Todos</option>
+          <option value="Abierto">Abierto</option>
+          <option value="En Proceso">En Proceso</option>
+          <option value="Resuelto">Resuelto</option>
+        </select>
+        <select id="filter-cat" title="Filtrar por Categoría">
+          <option value="todas">Categoría: Todas</option>
+          <option value="Red">Red</option>
+          <option value="Software">Software</option>
+          <option value="Hardware">Hardware</option>
+          <option value="Accesos">Accesos</option>
+        </select>
+        <select id="filter-pri" title="Filtrar por Prioridad">
+          <option value="todas">Prioridad: Todas</option>
+          <option value="Alta">Alta</option>
+          <option value="Media">Media</option>
+          <option value="Baja">Baja</option>
+        </select>
+      </div>
+      <div class="actions-group">
+        <button class="btn-secondary" id="btn-export-csv" title="Descargar como CSV">📥 Exportar CSV</button>
+        <button class="btn-secondary" id="btn-refresh" title="Recargar tickets">🔄 Actualizar</button>
+        <button class="btn-primary" onclick="setTab('nuevo')">➕ Crear Ticket</button>
+      </div>
+    </div>
+
+    <!-- Tabla de Incidentes -->
+    <div class="box-table-wrap">
+      <table id="tbl" class="modern-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Solicitante</th>
+            <th>Categoría</th>
+            <th>Prioridad</th>
+            <th>Descripción del Problema</th>
+            <th>Estado</th>
+            <th style="text-align: right;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="no-tickets-msg" class="empty-state" style="display: none;">
+        <span>🔍</span>
+        <p>No se encontraron tickets con los filtros seleccionados.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pestaña 2: Usuarios Registrados en PostgreSQL -->
+  <div id="tab-usuarios" class="tab">
+    <div class="user-management-grid">
+      <div class="box user-form-card">
+        <h3>➕ Registrar Nuevo Usuario en PostgreSQL</h3>
+        <p class="mut">Crea un registro permanente en la tabla <code>usuarios</code> de tu base de datos relacional.</p>
+        <div class="form-compact">
+          <label>Nombre Completo
+            <input id="u-name" placeholder="Ej. Sofía Benítez" maxlength="60">
+          </label>
+          <label>Rol en la Organización
+            <select id="u-rol">
+              <option value="alumno">Estudiante / Alumno</option>
+              <option value="docente">Docente / Profesor</option>
+              <option value="tecnico">Técnico de Laboratorio</option>
+              <option value="soporte">Personal de Mesa de Ayuda (TI)</option>
+            </select>
+          </label>
+          <button class="cta cta-primary" id="btn-create-user">Guardar Usuario en PostgreSQL</button>
+        </div>
+      </div>
+
+      <div class="box user-list-card">
+        <div class="table-header-flex">
+          <div>
+            <h3>👥 Directorio de Usuarios</h3>
+            <p class="mut">Usuarios leídos en vivo desde PostgreSQL.</p>
+          </div>
+          <div class="user-stats-pill" id="user-count-pill">0 usuarios</div>
+        </div>
+        <div class="table-scroll">
+          <table id="tbl-users" class="modern-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Rol</th>
+                <th>Privilegios</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pestaña 3: Nuevo Ticket -->
+  <div id="tab-nuevo" class="tab">
+    <div class="ticket-creation-layout">
+      <div class="box form-card">
+        <h3>📝 Registrar Solicitud de Incidente o Servicio</h3>
+        <p class="mut">El ticket se almacenará en PostgreSQL y se notificará en el panel de control.</p>
+        
+        <div class="form-grid">
+          <label>Solicitante
+            <input id="f-user" list="user-datalist" placeholder="Busca o escribe un usuario...">
+            <datalist id="user-datalist"></datalist>
+          </label>
+          <label>Categoría
+            <select id="f-cat">
+              <option value="Red">Red (WiFi, Cableado, Internet)</option>
+              <option value="Software">Software (Sistemas, Campus, Apps)</option>
+              <option value="Hardware">Hardware (PCs, Proyectores, Impresoras)</option>
+              <option value="Accesos">Accesos (Contraseñas, Permisos)</option>
+            </select>
+          </label>
+          <label>Nivel de Prioridad
+            <select id="f-pri">
+              <option value="Alta">🔴 Alta (Afecta clases o laboratorios completos)</option>
+              <option value="Media" selected>🟡 Media (Afecta a un grupo o tarea)</option>
+              <option value="Baja">🟢 Baja (Consulta o problema menor)</option>
+            </select>
+          </label>
+          <label class="full">Descripción del Problema
+            <textarea id="f-desc" rows="4" placeholder="Describe claramente qué ocurre, en qué laboratorio o aula, y qué mensajes de error se observan..."></textarea>
+          </label>
+          <div class="form-buttons full">
+            <button class="cta cta-primary" id="f-save">🚀 Registrar Incidente en PostgreSQL</button>
+            <button class="cta cta-ghost" onclick="setTab('panel')">Cancelar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plantillas Rápidas -->
+      <div class="box templates-card">
+        <h3>⚡ Plantillas de Incidentes Frecuentes</h3>
+        <p class="mut">Haz clic en una plantilla para autocompletar el formulario rápidamente:</p>
+        <div class="template-chips">
+          <button class="t-chip" data-user="Lucía" data-cat="Red" data-pri="Alta" data-desc="El punto de acceso WiFi del Laboratorio 4 no responde. Los estudiantes no pueden rendir la evaluación.">📶 Caída de WiFi en Laboratorio</button>
+          <button class="t-chip" data-user="Marco" data-cat="Hardware" data-pri="Alta" data-desc="El proyector interactivo del Aula Magna parpadea y se apaga a los 2 minutos.">📽️ Proyector de Aula no enciende</button>
+          <button class="t-chip" data-user="Andre" data-cat="Accesos" data-pri="Media" data-desc="Cuenta bloqueada por múltiples intentos fallidos al ingresar al portal de notas.">🔑 Desbloqueo de clave de acceso</button>
+          <button class="t-chip" data-user="Valentina Torres" data-cat="Software" data-pri="Media" data-desc="Error 500 al intentar enviar el informe final en el campus virtual.">💻 Falla de entrega en Campus Virtual</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pestaña 4: Métricas ITIL 4 -->
+  <div id="tab-metricas" class="tab">
+    <div class="metrics-grid">
+      <div class="box metric-card">
+        <h3>📊 Distribución por Categoría de Servicio</h3>
+        <p class="mut">Identificación de áreas con mayor demanda para mejora continua.</p>
+        <div id="cat-distribution-bars" class="bars-container"></div>
+      </div>
+
+      <div class="box metric-card">
+        <h3>🎯 Acuerdos de Nivel de Servicio (SLA)</h3>
+        <p class="mut">Indicadores de calidad de servicio y compromiso con los usuarios.</p>
+        <div class="sla-stats-wrapper">
+          <div class="sla-item">
+            <div class="sla-info">
+              <span>Resolución en menos de 24h</span>
+              <b id="sla-rate-text">92%</b>
+            </div>
+            <div class="sla-bar"><div class="sla-fill" style="width: 92%"></div></div>
+          </div>
+          <div class="sla-item">
+            <div class="sla-info">
+              <span>Incidentes Críticos atendidos &lt; 2h</span>
+              <b id="sla-crit-text">100%</b>
+            </div>
+            <div class="sla-bar"><div class="sla-fill" style="width: 100%"></div></div>
+          </div>
+          <div class="sla-item">
+            <div class="sla-info">
+              <span>Satisfacción del Solicitante (CSAT)</span>
+              <b>4.8 / 5.0 ⭐</b>
+            </div>
+            <div class="sla-bar"><div class="sla-fill" style="width: 96%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECCIÓN: CASO 2 (CUADRO COMPARATIVO SVS) ==================== -->
+<section id="caso2" class="sec">
+  <div class="sec-header">
+    <div>
+      <span class="badge-mini">CASO 2 · ESTRUCTURA ITIL 4</span>
+      <h2>Los 5 Componentes del Sistema de Valor del Servicio</h2>
+      <p class="lead">El SVS describe cómo todos los componentes y actividades de la organización trabajan juntos como un sistema para facilitar la co-creación de valor.</p>
+    </div>
+  </div>
+
+  <!-- Filtro de Búsqueda para el Cuadro -->
+  <div class="cmp-toolbar">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="cmp-search" placeholder="Filtrar por principio, gobernanza, cadena, práctica...">
+    </div>
+    <div class="filter-pills" id="cmp-filter-pills">
+      <button class="pill on" data-filter="all">Todos los 5 componentes</button>
+      <button class="pill" data-filter="Principios">Principios Rectores</button>
+      <button class="pill" data-filter="Gobernanza">Gobernanza</button>
+      <button class="pill" data-filter="Cadena">Cadena de Valor</button>
+      <button class="pill" data-filter="Prácticas">Prácticas</button>
+      <button class="pill" data-filter="Mejora">Mejora Continua</button>
+    </div>
+  </div>
+
+  <div class="box box-table-wrap">
+    <table id="cmp" class="modern-table cmp-table"></table>
+  </div>
+
+  <!-- Ficha de Profundidad Detallada -->
+  <div class="box svs-deep-dive" id="svs-deep-dive">
+    <div class="dive-header">
+      <span class="dive-badge" id="dive-comp-badge">Componente Seleccionado</span>
+      <h3 id="dive-title">Haz clic en cualquier fila de la tabla para ver su análisis a fondo</h3>
+    </div>
+    <div class="dive-content" id="dive-content">
+      <p class="mut">Toca un componente para visualizar su aplicación directa en la gestión tecnológica de una universidad y el principio rector asociado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECCIÓN: CASO 3 (MAPA MENTAL INTERACTIVO) ==================== -->
+<section id="caso3" class="sec">
+  <div class="sec-header">
+    <div>
+      <span class="badge-mini">CASO 3 · SÍNTESIS VISUAL</span>
+      <h2>Mapa Mental del Sistema de Valor del Servicio</h2>
+      <p class="lead">Explora interactivamente la red conceptual de ITIL 4. Selecciona cada nodo para desplegar su arquitectura detallada.</p>
+    </div>
+  </div>
+
+  <div class="mind-layout">
+    <div class="mind-canvas-box">
+      <div class="mind-core">
+        <div class="core-pulse"></div>
+        <div class="core-icon">💎</div>
+        <b>SVS ITIL 4</b>
+        <small>Demanda ➔ Valor</small>
+      </div>
+
+      <div class="branches" id="mind">
+        <!-- Generado dinámicamente -->
+      </div>
+    </div>
+
+    <div class="box detail-panel" id="mdetail">
+      <div class="detail-placeholder">
+        <span class="placeholder-icon">👆</span>
+        <h4>Selecciona una rama del mapa mental</h4>
+        <p class="mut">Podrás ver todos sus subconceptos, objetivos y cómo se conectan con la entrega de valor de servicio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECCIÓN: JUEGOS ==================== -->
+<section id="juegos" class="sec">
+  <div class="sec-header">
+    <div>
+      <span class="badge-mini">GAMIFICACIÓN & APRENDIZAJE</span>
+      <h2>Zona de Entrenamiento ITIL 4</h2>
+      <p class="lead">Entrena tus habilidades de gestión mediante dinámicas interactivas y supera los desafíos de la mesa de servicio.</p>
+    </div>
+  </div>
+
+  <div class="games-grid">
+    <!-- Juego 1: Quiz SVS -->
+    <div class="box game-card">
+      <div class="game-badge">QUIZ ACADÉMICO</div>
+      <h3>🏆 Master del SVS</h3>
+      <p class="mut">Preguntas oficiales adaptadas sobre los 5 componentes, principios rectores y actividades de la cadena de valor.</p>
+      
+      <div class="quiz-container">
+        <div class="quiz-header-bar">
+          <span id="q-counter">Pregunta 1 de 5</span>
+          <span class="score-pill" id="q-score">Puntos: 0</span>
+        </div>
+        <p id="q-text" class="q-statement">Pulsa el botón para iniciar el quiz.</p>
+        <div id="q-opts" class="opts-grid"></div>
+        <div id="q-feedback" class="quiz-feedback" style="display: none;"></div>
+      </div>
+
+      <button class="cta cta-primary" id="q-start">Empezar Quiz ITIL 4</button>
+    </div>
+
+    <!-- Juego 2: Atrapa el Bug -->
+    <div class="box game-card">
+      <div class="game-badge">SIMULADOR EN TIEMPO REAL</div>
+      <h3>🐞 Simulación: Salva el SLA</h3>
+      <p class="mut">Los incidentes aparecen al azar en la red. Tienes 15 segundos para contener y resolver la mayor cantidad posible.</p>
+      
+      <div class="game-status-bar">
+        <span id="g-timer">Tiempo: 15s</span>
+        <span class="score-pill" id="g-score">Incidentes: 0</span>
+      </div>
+
+      <div id="arena" class="arena-box">
+        <button id="bug" aria-label="Incidente crítico">🐞</button>
+        <div class="arena-grid-bg"></div>
+      </div>
+
+      <button class="cta cta-primary" id="g-start">Iniciar Simulación</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SECCIÓN: VISTA 3D ==================== -->
+<section id="vista3d" class="sec">
+  <div class="sec-header">
+    <div>
+      <span class="badge-mini">INMERSIÓN ESPACIAL</span>
+      <h2>Vista 3D: El SVS en Órbita Continua</h2>
+      <p class="lead">Visualiza la interacción armónica de los cinco componentes en un anillo rotativo 3D. Pasa el cursor para pausar e inclinar.</p>
+    </div>
+  </div>
+
+  <div class="scene-container">
+    <div class="scene" id="scene">
+      <div class="ring" id="ring"></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- Modal de Detalle de Ticket -->
+<div id="ticket-modal" class="modal-overlay" style="display: none;">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div class="modal-title-wrap">
+        <span id="m-ticket-id" class="ticket-pill">#00</span>
+        <h3 id="m-ticket-cat">Detalle del Incidente</h3>
+      </div>
+      <button class="close-modal-btn" onclick="closeTicketModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-meta-grid">
+        <div class="meta-item"><label>Solicitante</label><b id="m-ticket-user">--</b></div>
+        <div class="meta-item"><label>Prioridad</label><span id="m-ticket-pri" class="tag">--</span></div>
+        <div class="meta-item"><label>Estado Actual</label><span id="m-ticket-est" class="tag">--</span></div>
+        <div class="meta-item"><label>Registrado en BD</label><span id="m-ticket-date">--</span></div>
+      </div>
+      <div class="modal-desc-box">
+        <label>Descripción del Problema</label>
+        <p id="m-ticket-desc">--</p>
+      </div>
+      <div class="modal-itil-box">
+        <label>💡 Alineación con ITIL 4</label>
+        <p id="m-ticket-itil">La resolución efectiva de este incidente apoya la práctica de <b>Gestión de Incidentes</b> y garantiza que los usuarios retomen el valor del servicio rápidamente.</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="status-change-group">
+        <span>Cambiar estado:</span>
+        <button class="btn-state-sub" onclick="setModalTicketStatus('Abierto')">🟡 Abierto</button>
+        <button class="btn-state-sub" onclick="setModalTicketStatus('En Proceso')">🔵 En Proceso</button>
+        <button class="btn-state-sub" onclick="setModalTicketStatus('Resuelto')">🟢 Resuelto</button>
+      </div>
+      <button class="btn-secondary" onclick="deleteModalTicket()">🗑️ Eliminar</button>
+      <button class="cta cta-ghost" onclick="closeTicketModal()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Sistema de Notificaciones Toast -->
+<div id="toast-container" class="toast-container"></div>
+
+<!-- Modal de Bienvenida e Identificación -->
+<div id="intro">
+  <div class="hud">
+    <i></i><i></i><i></i>
+    <span>🕷️</span>
+  </div>
+  <h1>SPIDEY-IA</h1>
+  <p id="intro-t">Sistema de Valor del Servicio en línea. Identifícate para iniciar tu sesión de trabajo.</p>
+  <div id="intro-form">
+    <input id="name" placeholder="Escribe tu nombre..." autocomplete="given-name" maxlength="30">
+    <button class="cta cta-primary" id="start">Iniciar Sesión</button>
+  </div>
+  <button id="notme" class="link" hidden>Cambiar de identidad</button>
+</div>
+
+<!-- Asistente Flotante Spidey-IA -->
+<button id="bot-btn" aria-label="Abrir Spidey-IA" title="Abrir asistente Spidey-IA">
+  <span class="bot-spider">🕷️</span>
+  <span class="bot-badge-dot"></span>
+</button>
+
+<aside id="bot">
+  <div class="bot-head">
+    <div class="bot-avatar">🕷️</div>
+    <div class="bot-info">
+      <b>Spidey-IA</b>
+      <span class="bot-status-sub">Asistente ITIL 4 Activo</span>
+    </div>
+    <button id="bot-x" aria-label="Cerrar asistente">✕</button>
+  </div>
+  <div id="log"></div>
+  <div class="chips" id="chips"></div>
+  <div class="bot-in">
+    <button id="speech-btn" title="Hablar por voz (Reconocimiento)" aria-label="Reconocimiento por voz">🎙️</button>
+    <input id="msg" placeholder="Pregunta sobre ITIL o pide una acción...">
+    <button id="send" aria-label="Enviar mensaje">➤</button>
+    <button id="mic" title="Activar/Silenciar voz de Spidey" aria-label="Alternar voz del bot">🔊</button>
+  </div>
+</aside>
+
+<script src="app.js"></script>
+</body>
+</html>
